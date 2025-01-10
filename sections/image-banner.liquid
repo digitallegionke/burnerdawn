@@ -1,43 +1,142 @@
 {{ 'section-image-banner.css' | asset_url | stylesheet_tag }}
 
-<div
-  class="flex flex-col justify-start items-center self-stretch flex-grow-0 flex-shrink-0 gap-[70px] pt-[60px]"
->
+<style>
+  @font-face {
+    font-family: 'Bricolage Grotesque';
+    src: url('{{ "BricolageGrotesque-Regular.woff2" | asset_url }}') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Bricolage Grotesque';
+    src: url('{{ "BricolageGrotesque-Medium.woff2" | asset_url }}') format('woff2');
+    font-weight: 500;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Bricolage Grotesque';
+    src: url('{{ "BricolageGrotesque-SemiBold.woff2" | asset_url }}') format('woff2');
+    font-weight: 600;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Bricolage Grotesque';
+    src: url('{{ "BricolageGrotesque-Bold.woff2" | asset_url }}') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+  }
+
+  .image-banner {
+    max-width: 1440px;
+    margin: 0 auto;
+    background-color: #f6f6f4;
+    font-family: 'Bricolage Grotesque', sans-serif;
+  }
+
+  @media screen and (max-width: 1024px) {
+    .w-\[999px\] {
+      width: 100%;
+      max-width: 999px;
+    }
+
+    .w-\[1214px\] {
+      width: 100%;
+      max-width: 1214px;
+    }
+
+    .px-20 {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+
+    .text-\[66px\] {
+      font-size: 48px;
+    }
+
+    .text-\[40px\] {
+      font-size: 32px;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .text-\[66px\] {
+      font-size: 36px;
+    }
+
+    .text-\[40px\] {
+      font-size: 24px;
+    }
+
+    .text-\[19px\] {
+      font-size: 16px;
+    }
+
+    .px-20 {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+
+    .gap-\[70px\] {
+      gap: 40px;
+    }
+
+    .gap-\[43px\] {
+      gap: 24px;
+    }
+
+    .pb-20 {
+      padding-bottom: 3rem;
+    }
+
+    .h-\[534px\] {
+      height: 300px;
+    }
+  }
+</style>
+
+<div class="image-banner">
   <div
-    class="flex flex-col justify-start items-start self-stretch flex-grow-0 flex-shrink-0 relative gap-9 px-20"
+    class="flex flex-col justify-start items-center self-stretch flex-grow-0 flex-shrink-0 gap-[70px] pt-[60px]"
   >
-    <p
-      class="flex-grow-0 flex-shrink-0 w-[999px] text-[66px] font-semibold text-left text-[#354439]"
-    >
-      {{ section.settings.title | default: 'Bring Loved Ones Together with Every Delicious, Clean Creation.' }}
-    </p>
     <div
-      class="flex justify-center items-center flex-grow-0 flex-shrink-0 relative gap-2 px-7 py-3.5 rounded-[999px] bg-[#c06654]"
+      class="flex flex-col justify-start items-start self-stretch flex-grow-0 flex-shrink-0 relative gap-9 px-20"
     >
-      <p class="flex-grow-0 flex-shrink-0 text-xl font-bold text-left text-white">
-        {{ section.settings.button_text | default: 'Discover Burner Market' }}
+      <p
+        class="flex-grow-0 flex-shrink-0 w-[999px] text-[66px] font-semibold text-left text-[#354439]"
+      >
+        {{ section.settings.title | default: 'Bring Loved Ones Together with Every Delicious, Clean Creation.' }}
       </p>
+      <div
+        class="flex justify-center items-center flex-grow-0 flex-shrink-0 relative gap-2 px-7 py-3.5 rounded-[999px] bg-[#c06654]"
+      >
+        <p class="flex-grow-0 flex-shrink-0 text-xl font-bold text-left text-white">
+          {{ section.settings.button_text | default: 'Discover Burner Market' }}
+        </p>
+      </div>
     </div>
-  </div>
-  <div
-    class="flex flex-col justify-start items-center self-stretch flex-grow-0 flex-shrink-0 relative overflow-hidden gap-[43px] pb-20 bg-[#354439]"
-  >
-    {% if section.settings.image1 != blank %}
-      {{ section.settings.image1 | image_url: width: 1440 | image_tag:
-        class: 'self-stretch flex-grow-0 flex-shrink-0 h-[534px] w-full object-cover',
-        loading: 'lazy'
-      }}
-    {% endif %}
     <div
-      class="flex flex-col justify-start items-start self-stretch flex-grow-0 flex-shrink-0 relative gap-[13px] px-20"
+      class="flex flex-col justify-start items-center self-stretch flex-grow-0 flex-shrink-0 relative overflow-hidden gap-[43px] pb-20 bg-[#354439]"
     >
-      <p class="flex-grow-0 flex-shrink-0 text-[19px] font-semibold text-left text-white/60">
-        OUR CORE MISSION
-      </p>
-      <p class="flex-grow-0 flex-shrink-0 w-[1214px] text-[40px] text-left text-white">
-        We curate the finest, clean, and delicious food items to make it easy for you to create
-        mouth-watering snacks and meals for yourself and your loved ones, effortlessly.
-      </p>
+      {% if section.settings.image1 != blank %}
+        {{ section.settings.image1 | image_url: width: 1440 | image_tag:
+          class: 'self-stretch flex-grow-0 flex-shrink-0 h-[534px] w-full object-cover',
+          loading: 'lazy'
+        }}
+      {% endif %}
+      <div
+        class="flex flex-col justify-start items-start self-stretch flex-grow-0 flex-shrink-0 relative gap-[13px] px-20"
+      >
+        <p class="flex-grow-0 flex-shrink-0 text-[19px] font-semibold text-left text-white/60">
+          OUR CORE MISSION
+        </p>
+        <p class="flex-grow-0 flex-shrink-0 w-[1214px] text-[40px] text-left text-white">
+          We curate the finest, clean, and delicious food items to make it easy for you to create
+          mouth-watering snacks and meals for yourself and your loved ones, effortlessly.
+        </p>
+      </div>
     </div>
   </div>
 </div>

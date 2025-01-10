@@ -15,7 +15,9 @@
         "title": "Bring Loved Ones Together with Every Delicious, Clean Creation.",
         "button_text": "Discover Burner Market",
         "button_link": "/collections/all"
-      }
+      },
+      "blocks": {},
+      "block_order": []
     },
     "featured_collection": {
       "type": "featured-collection",

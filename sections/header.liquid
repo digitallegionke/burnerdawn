@@ -1,56 +1,204 @@
 {% style %}
-.header-wrapper {
-  padding: 40px 20px;
-  text-align: center;
+.header-container {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  overflow: hidden;
+  background-color: #f6f6f4;
+}
+
+.header-top {
+  display: flex;
+  flex-direction: column;
+  gap: 70px;
+  padding-top: 60px;
+}
+
+.header-content {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  padding: 0 80px;
 }
 
 .header-title {
-  font-size: 28px;
+  max-width: 999px;
+  font-size: 66px;
   font-weight: 600;
-  color: #333;
-  margin-bottom: 20px;
+  color: #354439;
+  line-height: 1.2;
+  margin: 0;
 }
 
 .header-button {
-  display: inline-block;
-  padding: 12px 30px;
-  background-color: #000;
-  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 28px;
+  background-color: #c06654;
+  border-radius: 999px;
   text-decoration: none;
-  border-radius: 6px;
-  font-weight: 500;
-  font-size: 16px;
   transition: all 0.3s ease;
 }
 
-.header-button:hover {
-  background-color: #333;
-  transform: translateY(-2px);
+.header-button-text {
+  font-size: 20px;
+  font-weight: 700;
+  color: #ffffff;
 }
 
-@media screen and (min-width: 768px) {
-  .header-wrapper {
-    padding: 60px 40px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
+.header-mission {
+  background-color: #354439;
+  padding-bottom: 80px;
+  width: 100%;
+}
+
+.header-image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.mission-content {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  padding: 0 80px;
+  margin-top: 43px;
+}
+
+.mission-subtitle {
+  font-size: 19px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 0;
+}
+
+.mission-text {
+  font-size: 40px;
+  color: #ffffff;
+  max-width: 1214px;
+  margin: 0;
+  line-height: 1.3;
+}
+
+@media screen and (max-width: 1024px) {
+  .header-content {
+    padding: 0 40px;
+  }
+
+  .header-title {
+    font-size: 48px;
+    max-width: 100%;
+  }
+
+  .mission-content {
+    padding: 0 40px;
+  }
+
+  .mission-text {
+    font-size: 32px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .header-content {
+    padding: 0 20px;
   }
 
   .header-title {
     font-size: 36px;
-    margin-bottom: 0;
   }
 
   .header-button {
-    padding: 14px 35px;
+    padding: 12px 24px;
+  }
+
+  .header-button-text {
     font-size: 18px;
+  }
+
+  .mission-content {
+    padding: 0 20px;
+  }
+
+  .mission-subtitle {
+    font-size: 16px;
+  }
+
+  .mission-text {
+    font-size: 24px;
   }
 }
 {% endstyle %}
 
-<div class="header-wrapper">
-  <h1 class="header-title">Bringing loved ones together</h1>
-  <a href="/collections/all" class="header-button">Shop Now</a>
+<div class="header-container">
+  <div class="header-top">
+    <div class="header-content">
+      <h1 class="header-title">{{ section.settings.title | default: 'Bring Loved Ones Together with Every Delicious, Clean Creation.' }}</h1>
+      <a href="{{ section.settings.button_link | default: '/collections/all' }}" class="header-button">
+        <span class="header-button-text">{{ section.settings.button_text | default: 'Discover Burner Market' }}</span>
+      </a>
+    </div>
+    <div class="header-mission">
+      {% if section.settings.image != blank %}
+        {{ section.settings.image | image_url: width: 1440 | image_tag: 
+          class: 'header-image',
+          loading: 'lazy',
+          alt: section.settings.image.alt | default: 'Header image'
+        }}
+      {% endif %}
+      <div class="mission-content">
+        <p class="mission-subtitle">{{ section.settings.subtitle | default: 'OUR CORE MISSION' }}</p>
+        <p class="mission-text">{{ section.settings.mission_text | default: 'We curate the finest, clean, and delicious food items to make it easy for you to create mouth-watering snacks and meals for yourself and your loved ones, effortlessly.' }}</p>
+      </div>
+    </div>
+  </div>
 </div>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Header Title",
+      "default": "Bring Loved Ones Together with Every Delicious, Clean Creation."
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Discover Burner Market"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Header Image"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Mission Subtitle",
+      "default": "OUR CORE MISSION"
+    },
+    {
+      "type": "textarea",
+      "id": "mission_text",
+      "label": "Mission Text",
+      "default": "We curate the finest, clean, and delicious food items to make it easy for you to create mouth-watering snacks and meals for yourself and your loved ones, effortlessly."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Header"
+    }
+  ]
+}
+{% endschema %}

@@ -9,6 +9,14 @@
  */
 {
   "sections": {
+    "image_banner": {
+      "type": "image-banner",
+      "settings": {
+        "title": "Bring Loved Ones Together with Every Delicious, Clean Creation.",
+        "button_text": "Discover Burner Market",
+        "button_link": "/collections/all"
+      }
+    },
     "featured_collection": {
       "type": "featured-collection",
       "settings": {
@@ -39,6 +47,7 @@
     }
   },
   "order": [
+    "image_banner",
     "featured_collection"
   ]
 }

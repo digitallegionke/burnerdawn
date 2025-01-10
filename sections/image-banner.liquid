@@ -1,47 +1,130 @@
 {{ 'section-image-banner.css' | asset_url | stylesheet_tag }}
 
-<div
-  class="flex flex-col justify-start items-start w-[1440px] overflow-hidden gap-2.5 bg-[#f6f6f4]"
->
-  <div
-    class="flex flex-col justify-start items-center self-stretch flex-grow-0 flex-shrink-0 gap-[70px] pt-[60px]"
-  >
-    <div
-      class="flex flex-col justify-start items-start self-stretch flex-grow-0 flex-shrink-0 relative gap-9 px-20"
-    >
-      <p
-        class="flex-grow-0 flex-shrink-0 w-[999px] text-[66px] font-semibold text-left text-[#354439]"
-      >
+<div class="banner-container">
+  <div class="banner-content">
+    <div class="banner-text">
+      <h1 class="banner-heading">
         {{ section.settings.title | default: 'Bring Loved Ones Together with Every Delicious, Clean Creation.' }}
-      </p>
-      <div
-        class="flex justify-center items-center flex-grow-0 flex-shrink-0 relative gap-2 px-7 py-3.5 rounded-[999px] bg-[#c06654]"
-      >
-        <p class="flex-grow-0 flex-shrink-0 text-xl font-bold text-left text-white">
-          {{ section.settings.button_text | default: 'Discover Burner Market' }}
-        </p>
-      </div>
+      </h1>
+      <a href="{{ section.settings.button_link }}" class="banner-button">
+        {{ section.settings.button_text | default: 'Discover Burner Market' }}
+      </a>
     </div>
-    <div
-      class="flex flex-col justify-start items-center self-stretch flex-grow-0 flex-shrink-0 relative overflow-hidden gap-[43px] pb-20 bg-[#354439]"
-    >
-      {% if section.settings.image1 != blank -%}
-        {{- section.settings.image1 | image_url: width: 1080 | image_tag: class: 'card-img-top', loading: 'lazy' -}}
-      {%- endif %}
-      <div
-        class="flex flex-col justify-start items-start self-stretch flex-grow-0 flex-shrink-0 relative gap-[13px] px-20"
-      >
-        <p class="flex-grow-0 flex-shrink-0 text-[19px] font-semibold text-left text-white/60">
-          OUR CORE MISSION
-        </p>
-        <p class="flex-grow-0 flex-shrink-0 w-[1214px] text-[40px] text-left text-white">
-          We curate the finest, clean, and delicious food items to make it easy for you to create
-          mouth-watering snacks and meals for yourself and your loved ones, effortlessly.
-        </p>
+    {% if section.settings.image1 != blank %}
+      <div class="banner-image">
+        {{ section.settings.image1 | image_url: width: 1440 | image_tag: 
+          loading: 'lazy',
+          class: 'banner-img'
+        }}
       </div>
+    {% endif %}
+    <div class="banner-mission">
+      <span class="mission-label">OUR CORE MISSION</span>
+      <p class="mission-text">
+        We curate the finest, clean, and delicious food items to make it easy for you to create
+        mouth-watering snacks and meals for yourself and your loved ones, effortlessly.
+      </p>
     </div>
   </div>
 </div>
+
+<style>
+.banner-container {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  background: #f6f6f4;
+}
+
+.banner-content {
+  display: flex;
+  flex-direction: column;
+  padding: 60px 0 0;
+}
+
+.banner-text {
+  padding: 0 80px;
+  margin-bottom: 70px;
+}
+
+.banner-heading {
+  font-family: 'Clash Display', sans-serif;
+  font-size: 66px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: #354439;
+  max-width: 999px;
+  margin: 0 0 36px;
+}
+
+.banner-button {
+  display: inline-flex;
+  padding: 14px 28px;
+  background: #c06654;
+  border-radius: 999px;
+  color: white;
+  font-weight: 700;
+  font-size: 20px;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.banner-button:hover {
+  background: #a85745;
+}
+
+.banner-image {
+  width: 100%;
+  height: auto;
+}
+
+.banner-img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.banner-mission {
+  background: #354439;
+  padding: 43px 80px;
+  color: white;
+}
+
+.mission-label {
+  display: block;
+  font-size: 19px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 13px;
+}
+
+.mission-text {
+  font-size: 40px;
+  line-height: 1.2;
+  max-width: 1214px;
+  margin: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .banner-text {
+    padding: 0 20px;
+    margin-bottom: 40px;
+  }
+  
+  .banner-heading {
+    font-size: 40px;
+    max-width: 100%;
+  }
+  
+  .banner-mission {
+    padding: 30px 20px;
+  }
+  
+  .mission-text {
+    font-size: 24px;
+  }
+}
+</style>
 
 {% schema %}
 {
@@ -82,9 +165,3 @@
   ]
 }
 {% endschema %}
-
-<style>
-.text-white\/60 {
-  color: rgba(255, 255, 255, 0.6);
-}
-</style>

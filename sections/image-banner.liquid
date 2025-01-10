@@ -1,62 +1,78 @@
 {{ 'section-image-banner.css' | asset_url | stylesheet_tag }}
 
-<div class="banner-container page-width">
-  <div class="banner-content">
-    <div class="banner-text-content">
-      <h1 class="banner-title">{{ section.settings.title | escape }}</h1>
-      {%- if section.settings.button_link != blank -%}
-        <a href="{{ section.settings.button_link }}" class="banner-button">
-          <span class="banner-button-text">{{ section.settings.button_text | escape }}</span>
-        </a>
-      {%- endif -%}
-    </div>
-    {%- if section.settings.image != blank -%}
-      <div class="banner-image-wrapper">
-        {%- assign image_height = section.settings.image.width | divided_by: section.settings.image.aspect_ratio -%}
-        {{ section.settings.image | image_url: width: 1500 | image_tag:
-          loading: 'lazy',
-          width: section.settings.image.width,
-          height: image_height,
-          class: 'banner-hero-image',
-          alt: section.settings.image.alt | default: section.settings.title
-        }}
+<div
+  class="flex flex-col justify-start items-start w-[1440px] overflow-hidden gap-2.5 bg-[#f6f6f4]"
+>
+  <div
+    class="flex flex-col justify-start items-center self-stretch flex-grow-0 flex-shrink-0 gap-[70px] pt-[60px]"
+  >
+    <div
+      class="flex flex-col justify-start items-start self-stretch flex-grow-0 flex-shrink-0 relative gap-9 px-20"
+    >
+      <p
+        class="flex-grow-0 flex-shrink-0 w-[999px] text-[66px] font-semibold text-left text-[#354439]"
+      >
+        {{ section.settings.title | default: 'Bring Loved Ones Together with Every Delicious, Clean Creation.' }}
+      </p>
+      <div
+        class="flex justify-center items-center flex-grow-0 flex-shrink-0 relative gap-2 px-7 py-3.5 rounded-[999px] bg-[#c06654]"
+      >
+        <p class="flex-grow-0 flex-shrink-0 text-xl font-bold text-left text-white">
+          {{ section.settings.button_text | default: 'Discover Burner Market' }}
+        </p>
       </div>
-    {%- endif -%}
+    </div>
+    <div
+      class="flex flex-col justify-start items-center self-stretch flex-grow-0 flex-shrink-0 relative overflow-hidden gap-[43px] pb-20 bg-[#354439]"
+    >
+      {% if section.settings.image1 != blank -%}
+        {{- section.settings.image1 | image_url: width: 1080 | image_tag: class: 'card-img-top', loading: 'lazy' -}}
+      {%- endif %}
+      <div
+        class="flex flex-col justify-start items-start self-stretch flex-grow-0 flex-shrink-0 relative gap-[13px] px-20"
+      >
+        <p class="flex-grow-0 flex-shrink-0 text-[19px] font-semibold text-left text-white/60">
+          OUR CORE MISSION
+        </p>
+        <p class="flex-grow-0 flex-shrink-0 w-[1214px] text-[40px] text-left text-white">
+          We curate the finest, clean, and delicious food items to make it easy for you to create
+          mouth-watering snacks and meals for yourself and your loved ones, effortlessly.
+        </p>
+      </div>
+    </div>
   </div>
 </div>
 
 {% schema %}
 {
-  "name": "t:sections.image-banner.name",
-  "tag": "section",
-  "class": "section",
+  "name": "Image banner",
   "settings": [
     {
       "type": "text",
       "id": "title",
       "default": "Bring Loved Ones Together with Every Delicious, Clean Creation.",
-      "label": "t:sections.image-banner.settings.title.label"
+      "label": "Banner Title"
     },
     {
       "type": "text",
       "id": "button_text",
       "default": "Discover Burner Market",
-      "label": "t:sections.image-banner.settings.button_text.label"
+      "label": "Button Text"
     },
     {
       "type": "url",
       "id": "button_link",
-      "label": "t:sections.image-banner.settings.button_link.label"
+      "label": "Button Link"
     },
     {
       "type": "image_picker",
-      "id": "image",
-      "label": "t:sections.image-banner.settings.image.label"
+      "id": "image1",
+      "label": "Banner Image"
     }
   ],
   "presets": [
     {
-      "name": "t:sections.image-banner.presets.name",
+      "name": "Image banner",
       "settings": {
         "title": "Bring Loved Ones Together with Every Delicious, Clean Creation.",
         "button_text": "Discover Burner Market",
@@ -67,112 +83,8 @@
 }
 {% endschema %}
 
-{% stylesheet %}
-.banner-container {
-  width: 100%;
-  max-width: 1440px;
-  margin: 0 auto;
-  overflow: hidden;
-  background-color: #f6f6f4;
+<style>
+.text-white\/60 {
+  color: rgba(255, 255, 255, 0.6);
 }
-
-.banner-content {
-  display: flex;
-  flex-direction: column;
-  gap: 36px;
-  padding: 60px 80px;
-  position: relative;
-}
-
-.banner-text-content {
-  display: flex;
-  flex-direction: column;
-  gap: 36px;
-  max-width: 600px;
-  z-index: 2;
-}
-
-.banner-image-wrapper {
-  position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 40%;
-  max-width: 500px;
-  z-index: 1;
-}
-
-.banner-hero-image {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-  border-radius: 12px;
-}
-
-.banner-title {
-  max-width: 600px;
-  font-size: 66px;
-  font-weight: 500;
-  color: #354439;
-  line-height: 1.1;
-  margin: 0;
-  font-family: 'Clash Display', sans-serif;
-}
-
-.banner-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 16px 32px;
-  background-color: #c06654;
-  border-radius: 999px;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  margin-top: 20px;
-  width: fit-content;
-}
-
-.banner-button-text {
-  font-size: 18px;
-  font-weight: 500;
-  color: #ffffff;
-}
-
-@media screen and (max-width: 1024px) {
-  .banner-content {
-    padding: 40px;
-  }
-
-  .banner-title {
-    font-size: 48px;
-    max-width: 100%;
-  }
-
-  .banner-image-wrapper {
-    position: relative;
-    width: 100%;
-    max-width: none;
-    transform: none;
-    top: 0;
-    margin-top: 30px;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .banner-content {
-    padding: 20px;
-  }
-
-  .banner-title {
-    font-size: 36px;
-  }
-
-  .banner-button {
-    padding: 12px 24px;
-  }
-
-  .banner-button-text {
-    font-size: 18px;
-  }
-}
-{% endstylesheet %}
+</style>

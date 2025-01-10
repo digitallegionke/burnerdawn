@@ -15,10 +15,8 @@
         "title": "Bring Loved Ones Together with Every Delicious, Clean Creation.",
         "button_text": "Discover Burner Market",
         "button_link": "/collections/all",
-        "image1": ""
-      },
-      "blocks": {},
-      "block_order": []
+        "image1": "shopify://shop_images/pexels-august-de-richelieu-4262418-2.png"
+      }
     },
     "featured_collection": {
       "type": "featured-collection",

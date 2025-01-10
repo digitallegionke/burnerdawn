@@ -1,39 +1,11 @@
 {{ 'section-image-banner.css' | asset_url | stylesheet_tag }}
 
 <style>
-  @font-face {
-    font-family: 'Bricolage Grotesque';
-    src: url('{{ "BricolageGrotesque-Regular.woff2" | asset_url }}') format('woff2');
-    font-weight: 400;
-    font-style: normal;
-  }
-
-  @font-face {
-    font-family: 'Bricolage Grotesque';
-    src: url('{{ "BricolageGrotesque-Medium.woff2" | asset_url }}') format('woff2');
-    font-weight: 500;
-    font-style: normal;
-  }
-
-  @font-face {
-    font-family: 'Bricolage Grotesque';
-    src: url('{{ "BricolageGrotesque-SemiBold.woff2" | asset_url }}') format('woff2');
-    font-weight: 600;
-    font-style: normal;
-  }
-
-  @font-face {
-    font-family: 'Bricolage Grotesque';
-    src: url('{{ "BricolageGrotesque-Bold.woff2" | asset_url }}') format('woff2');
-    font-weight: 700;
-    font-style: normal;
-  }
-
   .image-banner {
     max-width: 1440px;
     margin: 0 auto;
     background-color: #f6f6f4;
-    font-family: 'Bricolage Grotesque', sans-serif;
+    font-family: var(--font-body-family);
   }
 
   @media screen and (max-width: 1024px) {

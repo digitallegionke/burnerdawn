@@ -13,6 +13,35 @@
     "logo_width": 160,
     "type_header_font": "bricolage_grotesque_n4",
     "type_body_font": "bricolage_grotesque_n4",
+    "color_schemes": {
+      "scheme-1": {
+        "background": "#FFFFFF",
+        "background_gradient": "",
+        "text": "#354439",
+        "button": "#C06654",
+        "button_label": "#FFFFFF",
+        "secondary_button_label": "#354439",
+        "shadow": "#354439"
+      },
+      "scheme-2": {
+        "background": "#354439",
+        "background_gradient": "",
+        "text": "#FFFFFF",
+        "button": "#C06654",
+        "button_label": "#FFFFFF",
+        "secondary_button_label": "#FFFFFF",
+        "shadow": "#FFFFFF"
+      },
+      "scheme-3": {
+        "background": "#F6F6F4",
+        "background_gradient": "",
+        "text": "#354439",
+        "button": "#C06654",
+        "button_label": "#FFFFFF",
+        "secondary_button_label": "#354439",
+        "shadow": "#354439"
+      }
+    },
     "content_for_index": []
   }
 }

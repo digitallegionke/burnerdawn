@@ -1,0 +1,564 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "image_banner": {
+      "type": "image-banner",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Bring Loved Ones Closer with Every Delightful and Wholesome Creation.",
+            "heading_size": "h1"
+          }
+        },
+        "text": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "We curate the finest, clean, and delicious food items to make it easy for you to create mouth-watering snacks and meals for yourself and your loved ones, effortlessly.",
+            "text_style": "subtitle"
+          }
+        },
+        "button": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Shop all",
+            "button_link_1": "shopify://collections/all",
+            "button_style_secondary_1": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "text",
+        "button"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/pexels-august-de-richelieu-4262418_2.png",
+        "image_overlay_opacity": 40,
+        "image_height": "medium",
+        "desktop_content_position": "bottom-left",
+        "show_text_box": false,
+        "desktop_content_alignment": "left",
+        "color_scheme": "scheme-5",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "stack_images_on_mobile": true,
+        "show_text_below": false
+      }
+    },
+    "rich_text": {
+      "type": "rich-text",
+      "blocks": {
+        "caption_AtPKtg": {
+          "type": "caption",
+          "settings": {
+            "caption": "Our mission",
+            "text_style": "caption-with-letter-spacing",
+            "text_size": "medium"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<h2>We handpick the finest, wholesome, and flavorful food and beverage items, empowering you to effortlessly create irresistible meals that bring joy to you and your loved ones.</h2>"
+          }
+        }
+      },
+      "block_order": [
+        "caption_AtPKtg",
+        "text"
+      ],
+      "custom_css": [],
+      "settings": {
+        "desktop_content_position": "left",
+        "content_alignment": "left",
+        "color_scheme": "scheme-5",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 40
+      }
+    },
+    "rich_text_TNTcaR": {
+      "type": "rich-text",
+      "blocks": {
+        "caption_RiirEg": {
+          "type": "caption",
+          "settings": {
+            "caption": "What's burner market",
+            "text_style": "caption-with-letter-spacing",
+            "text_size": "medium"
+          }
+        },
+        "text_WQqyGF": {
+          "type": "text",
+          "settings": {
+            "text": "<h4>Burner Market connects organic farmers and ethical food producers with conscious consumers, offering fresh, sustainably sourced food. We empower farmers to manage demand, reduce waste, and grow sustainably, while fostering a community that values transparency and sustainability.</h4>"
+          }
+        }
+      },
+      "block_order": [
+        "caption_RiirEg",
+        "text_WQqyGF"
+      ],
+      "disabled": true,
+      "settings": {
+        "desktop_content_position": "left",
+        "content_alignment": "left",
+        "color_scheme": "scheme-4",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 40
+      }
+    },
+    "multicolumn_Hpj67d": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_7CP7Vb": {
+          "type": "column",
+          "settings": {
+            "title": "1. Choose or Create Your Ideal Box for Pre-order",
+            "text": "<p>We'll handpick it fresh and deliver directly to your doorstep from the farm.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_cc8dxt": {
+          "type": "column",
+          "settings": {
+            "title": "2. Handpicked Organic Produce, Just for You",
+            "text": "<p>We work closely with farmers to plan harvests, ensuring your produce is picked fresh for delivery.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_j6WKDk": {
+          "type": "column",
+          "settings": {
+            "title": "3. Fresh and Ready for Delivery",
+            "text": "<p>After picking your produce, we carefully pack it at our facility, preparing it for delivery straight to your door.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_7CP7Vb",
+        "column_cc8dxt",
+        "column_j6WKDk"
+      ],
+      "disabled": true,
+      "settings": {
+        "title": "How BurnerMarket Works",
+        "heading_size": "h2",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "columns_desktop": 3,
+        "column_alignment": "left",
+        "background_style": "primary",
+        "button_label": "Learn More",
+        "button_link": "",
+        "color_scheme": "",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "featured_collection1": {
+      "type": "featured-collection",
+      "disabled": true,
+      "settings": {
+        "title": "Our Produce Boxes",
+        "heading_size": "h2",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "produce-boxes",
+        "products_to_show": 6,
+        "columns_desktop": 3,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "enable_desktop_slider": false,
+        "color_scheme": "scheme-1",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": true,
+        "show_rating": false,
+        "quick_add": "bulk",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 52
+      }
+    },
+    "collection_list": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection1": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": ""
+          }
+        },
+        "featured_collection2": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": ""
+          }
+        },
+        "featured_collection3": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": ""
+          }
+        },
+        "featured_collection4": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": ""
+          }
+        },
+        "featured_collection5": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": ""
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection1",
+        "featured_collection2",
+        "featured_collection3",
+        "featured_collection4",
+        "featured_collection5"
+      ],
+      "disabled": true,
+      "settings": {
+        "title": "Shop our top categories",
+        "heading_size": "h2",
+        "image_ratio": "square",
+        "columns_desktop": 5,
+        "color_scheme": "scheme-4",
+        "show_view_all": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 48,
+        "padding_bottom": 60
+      }
+    },
+    "multicolumn1": {
+      "type": "multicolumn",
+      "blocks": {
+        "column7": {
+          "type": "column",
+          "settings": {
+            "title": "Add a customer testimonial",
+            "text": "",
+            "link_label": "Shop now",
+            "link": ""
+          }
+        },
+        "column8": {
+          "type": "column",
+          "settings": {
+            "title": "Add a customer testimonial",
+            "text": "",
+            "link_label": "Shop now",
+            "link": ""
+          }
+        },
+        "column9": {
+          "type": "column",
+          "settings": {
+            "title": "Add a customer testimonial",
+            "text": "",
+            "link_label": "Shop now",
+            "link": ""
+          }
+        },
+        "column10": {
+          "type": "column",
+          "settings": {
+            "title": "Add a customer testimonial",
+            "text": "",
+            "link_label": "Shop now",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column7",
+        "column8",
+        "column9",
+        "column10"
+      ],
+      "disabled": true,
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "columns_desktop": 4,
+        "column_alignment": "center",
+        "background_style": "none",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "scheme-2",
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "padding_top": 68,
+        "padding_bottom": 68
+      }
+    },
+    "featured_collection_qejrxx": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Seasonal boxes",
+        "heading_size": "h2",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "seasonal-boxes",
+        "products_to_show": 4,
+        "columns_desktop": 2,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "enable_desktop_slider": false,
+        "color_scheme": "",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "standard",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "multicolumn_6X33EX": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_jVQt8x": {
+          "type": "column",
+          "settings": {
+            "title": "Column",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_BGeDfQ": {
+          "type": "column",
+          "settings": {
+            "title": "Column",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_eFyNhX": {
+          "type": "column",
+          "settings": {
+            "title": "Column",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_jVQt8x",
+        "column_BGeDfQ",
+        "column_eFyNhX"
+      ],
+      "disabled": true,
+      "settings": {
+        "title": "Multicolumn",
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "columns_desktop": 3,
+        "column_alignment": "left",
+        "background_style": "primary",
+        "button_label": "Button label",
+        "button_link": "",
+        "color_scheme": "",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "image_with_text_PwWW4N": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_NyXa7x": {
+          "type": "heading",
+          "settings": {
+            "heading": "Explore delicious ways to transform your fresh, organic ingredients into unforgettable meals with our recipe collection.",
+            "heading_size": "h2"
+          }
+        },
+        "text_9tepDA": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Our recipes are thoughtfully crafted by chefs who deeply understand the journey of your ingredients—from the soil to your kitchen. With their expertise, we aim to help you create wholesome, flavorful dishes that bring joy to you and your family.</p><p>Let me know if you'd like to adjust the tone or focus further!</p>",
+            "text_style": "body"
+          }
+        },
+        "button_KtD8Ak": {
+          "type": "button",
+          "settings": {
+            "button_label": "View Recipe",
+            "button_link": "https://burnermarketco.framer.website/recipes",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_NyXa7x",
+        "text_9tepDA",
+        "button_KtD8Ak"
+      ],
+      "disabled": true,
+      "settings": {
+        "image": "shopify://shop_images/food-and-beverage-natural-1-bottom.webp",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "scheme-5",
+        "color_scheme": "scheme-4",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "featured_collection2": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Healthy Beverages",
+        "heading_size": "h2",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "kombuchas",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "full_width": false,
+        "show_view_all": false,
+        "view_all_style": "solid",
+        "enable_desktop_slider": true,
+        "color_scheme": "scheme-1",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": true,
+        "show_rating": false,
+        "quick_add": "bulk",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 52
+      }
+    },
+    "multicolumn2": {
+      "type": "multicolumn",
+      "blocks": {
+        "column11": {
+          "type": "column",
+          "settings": {
+            "title": "Add educational content",
+            "text": "<p>Provide content for your customers that sets their business up for success</p>",
+            "link_label": "Read now",
+            "link": ""
+          }
+        },
+        "column12": {
+          "type": "column",
+          "settings": {
+            "title": "Add educational content",
+            "text": "<p>Provide content for your customers that sets their business up for success</p>",
+            "link_label": "Read now",
+            "link": ""
+          }
+        },
+        "column13": {
+          "type": "column",
+          "settings": {
+            "title": "Add educational content",
+            "text": "<p>Provide content for your customers that sets their business up for success</p>",
+            "link_label": "Read now",
+            "link": ""
+          }
+        },
+        "column14": {
+          "type": "column",
+          "settings": {
+            "title": "Add educational content",
+            "text": "<p>Provide content for your customers that sets their business up for success</p>",
+            "link_label": "Read now",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column11",
+        "column12",
+        "column13",
+        "column14"
+      ],
+      "disabled": true,
+      "settings": {
+        "title": "You're set up for success",
+        "heading_size": "h2",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "columns_desktop": 4,
+        "column_alignment": "left",
+        "background_style": "primary",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "scheme-5",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 44,
+        "padding_bottom": 48
+      }
+    }
+  },
+  "order": [
+    "image_banner",
+    "rich_text",
+    "rich_text_TNTcaR",
+    "multicolumn_Hpj67d",
+    "featured_collection1",
+    "collection_list",
+    "multicolumn1",
+    "multicolumn_6X33EX",
+    "image_with_text_PwWW4N",
+    "featured_collection_qejrxx",
+    "featured_collection2",
+    "multicolumn2"
+  ]
+}

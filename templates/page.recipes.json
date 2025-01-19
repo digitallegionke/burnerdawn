@@ -16,7 +16,14 @@
         "padding_top": 28,
         "padding_bottom": 28
       }
+    },
+    "page_recipe_M4DHie": {
+      "type": "page-recipe",
+      "settings": {}
     }
   },
-  "order": ["main"]
+  "order": [
+    "main",
+    "page_recipe_M4DHie"
+  ]
 }

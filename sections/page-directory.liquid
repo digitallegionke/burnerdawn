@@ -1,49 +1,49 @@
-<div class="page-width">
-  <div class="section-{{ section.id }}-padding">
-    <div class="directory-header">
-      <div class="breadcrumbs">
-        <a href="/" class="breadcrumb-link">Home</a>
-        <svg class="breadcrumb-separator" width="16" height="17" viewBox="0 0 16 17" fill="none">
-          <path d="M8.62986 8.50033L5.91436 5.785C5.82214 5.69267 5.77492 5.57661 5.7727 5.43683C5.77059 5.29717 5.81781 5.179 5.91436 5.08233C6.01103 4.98578 6.12814 4.9375 6.2657 4.9375C6.40325 4.9375 6.52036 4.98578 6.61703 5.08233L9.6132 8.0785C9.67553 8.14094 9.71953 8.20678 9.7452 8.276C9.77086 8.34522 9.7837 8.42 9.7837 8.50033C9.7837 8.58067 9.77086 8.65544 9.7452 8.72467C9.71953 8.79389 9.67553 8.85972 9.6132 8.92217L6.61703 11.9183C6.5247 12.0106 6.40864 12.0578 6.26886 12.06C6.1292 12.0621 6.01103 12.0149 5.91436 11.9183C5.81781 11.8217 5.76953 11.7046 5.76953 11.567C5.76953 11.4294 5.81781 11.3123 5.91436 11.2157L8.62986 8.50033Z" fill="#354439" opacity="0.6"/>
-        </svg>
-        <span class="breadcrumb-current">Ingredients</span>
-      </div>
+{{ 'section-directory.css' | asset_url | stylesheet_tag }}
 
+<div class="page-width directory-page">
+  <div class="directory-header">
+    <div class="breadcrumbs">
+      <a href="/" class="breadcrumb-link">Home</a>
+      <svg class="breadcrumb-separator" width="16" height="17" viewBox="0 0 16 17" fill="none">
+        <path d="M8.62986 8.50033L5.91436 5.785C5.82214 5.69267 5.77492 5.57661 5.7727 5.43683C5.77059 5.29717 5.81781 5.179 5.91436 5.08233C6.01103 4.98578 6.12814 4.9375 6.2657 4.9375C6.40325 4.9375 6.52036 4.98578 6.61703 5.08233L9.6132 8.0785C9.67553 8.14094 9.71953 8.20678 9.7452 8.276C9.77086 8.34522 9.7837 8.42 9.7837 8.50033C9.7837 8.58067 9.77086 8.65544 9.7452 8.72467C9.71953 8.79389 9.67553 8.85972 9.6132 8.92217L6.61703 11.9183C6.5247 12.0106 6.40864 12.0578 6.26886 12.06C6.1292 12.0621 6.01103 12.0149 5.91436 11.9183C5.81781 11.8217 5.76953 11.7046 5.76953 11.567C5.76953 11.4294 5.81781 11.3123 5.91436 11.2157L8.62986 8.50033Z" fill="#354439" opacity="0.6"/>
+      </svg>
+      <span class="breadcrumb-current">Ingredients</span>
+    </div>
+
+    <div class="directory-content">
       <h1 class="directory-title">Search for ingredient</h1>
       <p class="directory-description">We've carefully curated details about each ingredient from what it is, how to care for it to how to cook with it, giving you a delightful experience with it</p>
+    </div>
 
-      <div class="directory-filters">
-        <button class="filter-button active" data-filter="all">All</button>
-        <button class="filter-button" data-filter="herbs">Herbs</button>
-        <button class="filter-button" data-filter="vegetables">Vegetables</button>
-        <button class="filter-button" data-filter="fruits">Fruits</button>
+    <div class="directory-tabs">
+      <button class="directory-tab directory-tab--active" data-filter="all">All</button>
+      <button class="directory-tab" data-filter="herbs">Herbs</button>
+      <button class="directory-tab" data-filter="vegetables">Vegetables</button>
+      <button class="directory-tab" data-filter="fruits">Fruits</button>
+    </div>
+  </div>
+
+  <div class="directory-grid">
+    {% for block in section.blocks %}
+      <div class="directory-item" {{ block.shopify_attributes }} data-category="{{ block.settings.category | downcase }}">
+        <a href="{{ block.settings.url }}" class="directory-link">
+          <div class="directory-image-wrapper">
+            {% if block.settings.image %}
+              {{ block.settings.image | image_url: width: 285 | image_tag:
+                class: "directory-image",
+                loading: "lazy",
+                width: block.settings.image.width,
+                height: block.settings.image.height
+              }}
+            {% endif %}
+          </div>
+          <div class="directory-details">
+            <h2 class="directory-item-title">{{ block.settings.title }}</h2>
+            <p class="directory-item-category">{{ block.settings.category }}</p>
+          </div>
+        </a>
       </div>
-    </div>
-
-    <div class="product-grid-container">
-      {% for block in section.blocks %}
-        <div class="product-grid-item" {{ block.shopify_attributes }} data-category="{{ block.settings.category | downcase }}">
-          <a href="{{ block.settings.url }}" class="product-link">
-            <div class="product-image-container">
-              {% if block.settings.image %}
-                {{ block.settings.image | image_url: width: 285 | image_tag:
-                  class: "product-image",
-                  loading: "lazy",
-                  width: block.settings.image.width,
-                  height: block.settings.image.height
-                }}
-              {% endif %}
-            </div>
-            <div class="product-details">
-              <div class="product-info">
-                <h2 class="product-title">{{ block.settings.title }}</h2>
-                <p class="product-category">{{ block.settings.category }}</p>
-              </div>
-            </div>
-          </a>
-        </div>
-      {% endfor %}
-    </div>
+    {% endfor %}
   </div>
 </div>
 
@@ -110,179 +110,18 @@
 }
 {% endschema %}
 
-<style>
-.directory-header {
-  padding: 40px 80px;
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-  align-items: flex-start;
-}
-
-.breadcrumbs {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-}
-
-.breadcrumb-link {
-  color: #595959;
-  text-decoration: none;
-  font-family: "Bricolage Grotesque", sans-serif;
-  font-weight: 600;
-}
-
-.breadcrumb-current {
-  color: #354439;
-  font-family: "Bricolage Grotesque", sans-serif;
-  font-weight: 600;
-}
-
-.directory-title {
-  font-family: "Bricolage Grotesque", sans-serif;
-  font-size: 38px;
-  font-weight: 600;
-  color: #354439;
-  margin: 0;
-}
-
-.directory-description {
-  font-family: "Bricolage Grotesque", sans-serif;
-  font-size: 18px;
-  line-height: 120%;
-  color: #354439;
-  opacity: 0.8;
-  max-width: 643px;
-  margin: 0;
-}
-
-.directory-filters {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-
-.filter-button {
-  background: rgba(53, 68, 57, 0.08);
-  border: none;
-  padding: 9px 30px;
-  font-family: "Bricolage Grotesque", sans-serif;
-  font-size: 18px;
-  font-weight: 600;
-  color: #354439;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.filter-button.active {
-  background: #354439;
-  color: white;
-}
-
-.product-grid-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: 20px;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
-.product-grid-item {
-  display: flex;
-  flex-direction: column;
-  gap: 19px;
-}
-
-.product-link {
-  text-decoration: none;
-  color: inherit;
-}
-
-.product-image-container {
-  aspect-ratio: 1;
-  background: white;
-  border: 1px solid #e7e7e7;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.product-image {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
-  padding: 16px;
-}
-
-.product-details {
-  display: flex;
-  flex-direction: column;
-  gap: 2.5px;
-}
-
-.product-info {
-  display: flex;
-  flex-direction: column;
-}
-
-.product-title {
-  font-size: 22px;
-  font-weight: 600;
-  color: #354439;
-  margin: 0 0 5px 0;
-  font-family: "Bricolage Grotesque", sans-serif;
-}
-
-.product-category {
-  font-size: 14px;
-  font-weight: 600;
-  text-transform: uppercase;
-  color: #354439;
-  opacity: 0.7;
-  margin: 0;
-  font-family: "Bricolage Grotesque", sans-serif;
-}
-
-@media screen and (max-width: 809px) {
-  .directory-header {
-    padding: 40px 20px;
-  }
-
-  .directory-title {
-    font-size: 31px;
-  }
-
-  .directory-description {
-    max-width: 100%;
-  }
-
-  .filter-button {
-    width: 100%;
-    text-align: center;
-  }
-}
-
-@media screen and (min-width: 810px) and (max-width: 1199px) {
-  .directory-header {
-    padding: 40px;
-  }
-}
-</style>
-
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    const filterButtons = document.querySelectorAll('.filter-button');
-    const products = document.querySelectorAll('.product-grid-item');
+    const filterButtons = document.querySelectorAll('.directory-tab');
+    const products = document.querySelectorAll('.directory-item');
 
     filterButtons.forEach(button => {
       button.addEventListener('click', () => {
         const filter = button.getAttribute('data-filter');
         
         // Update active button
-        filterButtons.forEach(btn => btn.classList.remove('active'));
-        button.classList.add('active');
+        filterButtons.forEach(btn => btn.classList.remove('directory-tab--active'));
+        button.classList.add('directory-tab--active');
 
         // Filter products
         products.forEach(product => {

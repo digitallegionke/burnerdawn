@@ -1,14 +1,37 @@
 {{ 'section-recipe.css' | asset_url | stylesheet_tag }}
 
 <div class="page-width recipe-page">
-  <h1 class="recipe-page__title">Recipes</h1>
+  <h1 class="recipe-page__title">{{ 'recipes.title' | t }}</h1>
+
+  <div class="recipe-tabs">
+    <button class="recipe-tab recipe-tab--active">{{ 'recipes.filters.recipes' | t }}</button>
+    <button class="recipe-tab">{{ 'recipes.filters.meal_prep' | t }}</button>
+    <button class="recipe-tab">{{ 'recipes.filters.kitchen_tools' | t }}</button>
+  </div>
+
+  <div class="recipe-grid">
+    {%- for block in section.blocks -%}
+      <a href="{{ block.settings.url }}" class="recipe-card" {{ block.shopify_attributes }}>
+        {%- if block.settings.image != blank -%}
+          <div class="recipe-card__image-wrapper">
+            {{ block.settings.image | image_url: width: 588 | image_tag:
+              loading: 'lazy',
+              class: 'recipe-card__image',
+              height: 171,
+              width: 588
+            }}
+          </div>
+        {%- endif -%}
+        <div class="recipe-card__content">
+          <h3 class="recipe-card__title">{{ block.settings.title }}</h3>
+        </div>
+      </a>
+    {%- endfor -%}
+  </div>
 
   <div class="recipe-newsletter">
     <div class="recipe-newsletter__wrapper">
-      <p class="recipe-newsletter__heading">
-        <span>{{ 'newsletter.recipe.heading' | t }}</span><br/>
-        <span>{{ 'newsletter.recipe.heading_span' | t }}</span>
-      </p>
+      <h2 class="recipe-newsletter__heading">{{ 'newsletter.recipe.heading' | t }}</h2>
       
       {%- form 'customer', id: 'RecipeNewsletterForm', class: 'recipe-newsletter__form' -%}
         <input type="hidden" name="contact[tags]" value="newsletter">
@@ -40,68 +63,35 @@
     </div>
   </div>
 
-  <div class="recipe-grid">
-    {%- for block in section.blocks -%}
-      <div class="recipe-card" {{ block.shopify_attributes }}>
-        {%- if block.settings.image != blank -%}
-          <div class="recipe-card__image-wrapper">
-            {{ block.settings.image | image_url: width: 282 | image_tag:
-              loading: 'lazy',
-              class: 'recipe-card__image',
-              height: 216,
-              width: 282
-            }}
-          </div>
-        {%- endif -%}
-        <div class="recipe-card__content">
-          <p class="recipe-card__date">{{ block.settings.date }}</p>
-          <h3 class="recipe-card__title">{{ block.settings.title }}</h3>
-        </div>
-      </div>
-    {%- endfor -%}
-  </div>
-
-  <div class="recipe-filters">
-    <button class="recipe-filter-button recipe-filter-button--active">{{ 'recipes.filters.recipes' | t }}</button>
-    <button class="recipe-filter-button">{{ 'recipes.filters.meal_prep' | t }}</button>
-    <button class="recipe-filter-button">{{ 'recipes.filters.kitchen_tools' | t }}</button>
-    <button class="recipe-filter-button">{{ 'recipes.filters.kitchen_basics' | t }}</button>
-  </div>
-
-  <div class="recipe-featured">
-    <div class="recipe-featured__main">
-      {%- if section.settings.featured_image != blank -%}
-        {{ section.settings.featured_image | image_url: width: 615 | image_tag:
-          loading: 'lazy',
-          class: 'recipe-featured__main-image',
-          height: 600,
-          width: 615
-        }}
-      {%- endif -%}
-      <div class="recipe-featured__main-content">
-        <p class="recipe-featured__date">{{ section.settings.featured_date }}</p>
-        <h2 class="recipe-featured__title">{{ section.settings.featured_title }}</h2>
-      </div>
+  <div class="recipe-more">
+    <div class="recipe-more__header">
+      <h2 class="recipe-more__title">More great recipes</h2>
+      <a href="#" class="recipe-more__link">
+        View all Recipes
+        <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M5.41713 14.0834L16.2505 14.0834L12.683 17.6508L14.2149 19.1826L18.8656 14.5319C19.2718 14.1256 19.5 13.5746 19.5 13C19.5 12.4255 19.2718 11.8745 18.8656 11.4682L14.2149 6.81745L12.683 8.34928L16.2505 11.9167L5.41713 11.9167L5.41713 14.0834Z" fill="currentColor"/>
+        </svg>
+      </a>
     </div>
 
-    <div class="recipe-featured__secondary">
-      {%- for i in (1..2) -%}
-        {%- assign image_setting = 'secondary_image_' | append: i -%}
-        {%- assign date_setting = 'secondary_date_' | append: i -%}
-        {%- assign title_setting = 'secondary_title_' | append: i -%}
+    <div class="recipe-more__grid">
+      {%- for i in (1..4) -%}
+        {%- assign image_setting = 'more_image_' | append: i -%}
+        {%- assign date_setting = 'more_date_' | append: i -%}
+        {%- assign title_setting = 'more_title_' | append: i -%}
         
-        <div class="recipe-featured__secondary-item">
+        <div class="recipe-more__item">
           {%- if section.settings[image_setting] != blank -%}
-            {{ section.settings[image_setting] | image_url: width: 564 | image_tag:
+            {{ section.settings[image_setting] | image_url: width: 216 | image_tag:
               loading: 'lazy',
-              class: 'recipe-featured__secondary-image',
-              height: 248,
-              width: 564
+              class: 'recipe-more__image',
+              height: 216,
+              width: 216
             }}
           {%- endif -%}
-          <div class="recipe-featured__secondary-content">
-            <p class="recipe-featured__date">{{ section.settings[date_setting] }}</p>
-            <h3 class="recipe-featured__secondary-title">{{ section.settings[title_setting] }}</h3>
+          <div class="recipe-more__content">
+            <p class="recipe-more__date">{{ section.settings[date_setting] }}</p>
+            <h3 class="recipe-more__item-title">{{ section.settings[title_setting] }}</h3>
           </div>
         </div>
       {%- endfor -%}
@@ -115,54 +105,71 @@
   "settings": [
     {
       "type": "image_picker",
-      "id": "featured_image",
-      "label": "Featured Image"
+      "id": "more_image_1",
+      "label": "More Recipe Image 1"
     },
     {
       "type": "text",
-      "id": "featured_date",
-      "label": "Featured Date",
+      "id": "more_date_1",
+      "label": "More Recipe Date 1",
       "default": "August 8, 2024"
     },
     {
       "type": "text",
-      "id": "featured_title",
-      "label": "Featured Title",
-      "default": "Keralan-Inspired Prawn Curry"
+      "id": "more_title_1",
+      "label": "More Recipe Title 1",
+      "default": "Sirloin & Sherry Shallot Sauce"
     },
     {
       "type": "image_picker",
-      "id": "secondary_image_1",
-      "label": "Secondary Image 1"
+      "id": "more_image_2",
+      "label": "More Recipe Image 2"
     },
     {
       "type": "text",
-      "id": "secondary_date_1",
-      "label": "Secondary Date 1",
+      "id": "more_date_2",
+      "label": "More Recipe Date 2",
       "default": "August 8, 2024"
     },
     {
       "type": "text",
-      "id": "secondary_title_1",
-      "label": "Secondary Title 1",
-      "default": "Creamy Butter Beans With Sausage"
+      "id": "more_title_2",
+      "label": "More Recipe Title 2",
+      "default": "Shrimp & Honey Miso Broccoli Donburi"
     },
     {
       "type": "image_picker",
-      "id": "secondary_image_2",
-      "label": "Secondary Image 2"
+      "id": "more_image_3",
+      "label": "More Recipe Image 3"
     },
     {
       "type": "text",
-      "id": "secondary_date_2",
-      "label": "Secondary Date 2",
+      "id": "more_date_3",
+      "label": "More Recipe Date 3",
       "default": "August 8, 2024"
     },
     {
       "type": "text",
-      "id": "secondary_title_2",
-      "label": "Secondary Title 2",
-      "default": "Secret Chocolate Cake"
+      "id": "more_title_3",
+      "label": "More Recipe Title 3",
+      "default": "Raspberry-Ricotta Cake"
+    },
+    {
+      "type": "image_picker",
+      "id": "more_image_4",
+      "label": "More Recipe Image 4"
+    },
+    {
+      "type": "text",
+      "id": "more_date_4",
+      "label": "More Recipe Date 4",
+      "default": "August 8, 2024"
+    },
+    {
+      "type": "text",
+      "id": "more_title_4",
+      "label": "More Recipe Title 4",
+      "default": "One-Pot Chicken and Rice"
     }
   ],
   "blocks": [
@@ -177,15 +184,14 @@
         },
         {
           "type": "text",
-          "id": "date",
-          "label": "Date",
-          "default": "August 8, 2024"
-        },
-        {
-          "type": "text",
           "id": "title",
           "label": "Title",
           "default": "Recipe Title"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Recipe URL"
         }
       ]
     }
@@ -194,9 +200,6 @@
     {
       "name": "Recipe Page",
       "blocks": [
-        {
-          "type": "recipe_card"
-        },
         {
           "type": "recipe_card"
         },

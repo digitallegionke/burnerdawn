@@ -1,0 +1,129 @@
+.recipe-newsletter {
+  background-color: #f9f9f9;
+  padding: 2.5rem 0;
+  margin: 2rem 0;
+}
+
+.recipe-newsletter__wrapper {
+  display: flex;
+  align-items: center;
+  gap: 6rem;
+  padding: 0 2rem;
+  max-width: var(--page-width);
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 989px) {
+  .recipe-newsletter__wrapper {
+    flex-direction: column;
+    gap: 2rem;
+    padding: 0 1.5rem;
+  }
+}
+
+.recipe-newsletter__content {
+  flex-shrink: 0;
+}
+
+.recipe-newsletter__heading {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #354439;
+  line-height: 1.2;
+  margin: 0;
+}
+
+@media screen and (max-width: 749px) {
+  .recipe-newsletter__heading {
+    font-size: 1.8rem;
+  }
+}
+
+.recipe-newsletter__heading-span {
+  display: block;
+}
+
+.recipe-newsletter__form {
+  flex: 1;
+  max-width: 662px;
+  width: 100%;
+}
+
+.recipe-newsletter__field-wrapper {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgba(53, 68, 57, 0.4);
+  padding: 1rem 0;
+  margin-bottom: 1rem;
+}
+
+.recipe-newsletter__field {
+  flex: 1;
+  position: relative;
+}
+
+.recipe-newsletter__field__input {
+  width: 100%;
+  border: none;
+  background: transparent;
+  font-size: 1.25rem;
+  color: #354439;
+  padding: 0.5rem 0;
+}
+
+.recipe-newsletter__field__input::placeholder {
+  color: rgba(53, 68, 57, 0.4);
+}
+
+.recipe-newsletter__field__input:focus {
+  outline: none;
+  border-color: #354439;
+}
+
+.recipe-newsletter__button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: transparent;
+  border: none;
+  padding: 0.75rem;
+  cursor: pointer;
+  font-weight: 700;
+  color: #354439;
+  transition: opacity 0.3s ease;
+}
+
+.recipe-newsletter__button:hover {
+  opacity: 0.8;
+}
+
+.recipe-newsletter__button-icon {
+  width: 26px;
+  height: 26px;
+}
+
+.recipe-newsletter__privacy {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #354439;
+  margin: 1rem 0 0;
+}
+
+@media screen and (max-width: 749px) {
+  .recipe-newsletter__privacy {
+    font-size: 1rem;
+  }
+}
+
+.recipe-newsletter__form-message {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  color: #354439;
+}
+
+.recipe-newsletter__form-message.form__message {
+  justify-content: flex-start;
+  padding: 0.75rem 0;
+}

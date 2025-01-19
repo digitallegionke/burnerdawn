@@ -1,5 +1,7 @@
 .recipe-page {
-  padding: 2rem 0;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
 .recipe-page__title {
@@ -7,36 +9,20 @@
   font-weight: 600;
   text-align: center;
   color: #354439;
-  margin-bottom: 2rem;
-}
-
-@media screen and (max-width: 749px) {
-  .recipe-page__title {
-    font-size: 32px;
-  }
+  margin: 40px 0;
 }
 
 /* Newsletter Section */
 .recipe-newsletter {
   background-color: #f9f9f9;
   padding: 38px 37px;
-  margin-bottom: 3rem;
+  margin-bottom: 60px;
 }
 
 .recipe-newsletter__wrapper {
   display: flex;
   align-items: center;
   gap: 102px;
-  max-width: var(--page-width);
-  margin: 0 auto;
-}
-
-@media screen and (max-width: 989px) {
-  .recipe-newsletter__wrapper {
-    flex-direction: column;
-    gap: 2rem;
-    padding: 0 1.5rem;
-  }
 }
 
 .recipe-newsletter__heading {
@@ -45,12 +31,15 @@
   color: #354439;
   line-height: 1.2;
   margin: 0;
+  flex-shrink: 0;
 }
 
 .recipe-newsletter__form {
   flex: 1;
   max-width: 662px;
-  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
 }
 
 .recipe-newsletter__field-wrapper {
@@ -58,8 +47,8 @@
   align-items: center;
   justify-content: space-between;
   border-bottom: 1px solid rgba(53, 68, 57, 0.4);
-  padding: 1rem 0;
-  margin-bottom: 1.125rem;
+  padding: 16px 0;
+  height: 66px;
 }
 
 .recipe-newsletter__field {
@@ -70,7 +59,7 @@
   width: 100%;
   border: none;
   background: transparent;
-  font-size: 1.25rem;
+  font-size: 20px;
   color: #354439;
   opacity: 0.4;
 }
@@ -83,18 +72,18 @@
 .recipe-newsletter__button {
   display: flex;
   align-items: center;
-  gap: 0.375rem;
+  gap: 6px;
   background: transparent;
   border: none;
-  padding: 0.625rem;
+  padding: 10px;
   cursor: pointer;
   color: #354439;
   font-weight: 700;
-  font-size: 1rem;
+  font-size: 16px;
 }
 
 .recipe-newsletter__privacy {
-  font-size: 1.125rem;
+  font-size: 18px;
   font-weight: 600;
   color: #354439;
   margin: 0;
@@ -102,32 +91,24 @@
 
 /* Recipe Grid */
 .recipe-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1.5rem;
-  margin-bottom: 3.25rem;
-}
-
-@media screen and (max-width: 989px) {
-  .recipe-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media screen and (max-width: 749px) {
-  .recipe-grid {
-    grid-template-columns: 1fr;
-  }
+  display: flex;
+  justify-content: start;
+  gap: 24px;
+  margin-bottom: 52px;
+  width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .recipe-card {
+  width: 282px;
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
+  gap: 20px;
 }
 
 .recipe-card__image-wrapper {
-  aspect-ratio: 282/216;
+  height: 216px;
   overflow: hidden;
 }
 
@@ -140,18 +121,18 @@
 .recipe-card__content {
   display: flex;
   flex-direction: column;
-  gap: 0.3125rem;
+  gap: 5px;
 }
 
 .recipe-card__date {
-  font-size: 0.875rem;
+  font-size: 14px;
   font-weight: 600;
   color: rgba(53, 68, 57, 0.7);
   margin: 0;
 }
 
 .recipe-card__title {
-  font-size: 1.375rem;
+  font-size: 22px;
   font-weight: 600;
   color: #354439;
   margin: 0;
@@ -161,14 +142,13 @@
 .recipe-filters {
   display: flex;
   justify-content: center;
-  gap: 0.875rem;
-  margin-bottom: 3.25rem;
-  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 52px;
 }
 
 .recipe-filter-button {
   padding: 9px 30px;
-  font-size: 1.125rem;
+  font-size: 18px;
   font-weight: 600;
   color: #354439;
   background: rgba(53, 68, 57, 0.08);
@@ -184,77 +164,138 @@
 
 /* Featured Section */
 .recipe-featured {
-  display: grid;
-  grid-template-columns: 615px 1fr;
-  gap: 1.3125rem;
-  margin-bottom: 3rem;
-}
-
-@media screen and (max-width: 1199px) {
-  .recipe-featured {
-    grid-template-columns: 1fr;
-  }
+  display: flex;
+  gap: 21px;
+  width: 1200px;
+  margin: 0 auto;
 }
 
 .recipe-featured__main {
+  width: 615px;
   display: flex;
   flex-direction: column;
-  gap: 0.9375rem;
+  gap: 15px;
 }
 
 .recipe-featured__main-image {
-  width: 100%;
-  height: auto;
-  aspect-ratio: 615/600;
+  width: 615px;
+  height: 600px;
   object-fit: cover;
 }
 
 .recipe-featured__secondary {
+  width: 564px;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 24px;
 }
 
 .recipe-featured__secondary-item {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 12px;
 }
 
 .recipe-featured__secondary-image {
-  width: 100%;
-  height: auto;
-  aspect-ratio: 564/248;
+  width: 564px;
+  height: 248px;
   object-fit: cover;
 }
 
 .recipe-featured__date {
-  font-size: 0.875rem;
+  font-size: 14px;
   font-weight: 600;
   color: rgba(53, 68, 57, 0.7);
   margin: 0;
 }
 
 .recipe-featured__title {
-  font-size: 2.5rem;
+  font-size: 36px;
   font-weight: 600;
   color: #354439;
   margin: 0;
 }
 
 .recipe-featured__secondary-title {
-  font-size: 1.8125rem;
+  font-size: 29px;
   font-weight: 600;
   color: #354439;
   margin: 0;
 }
 
+@media screen and (max-width: 1439px) {
+  .recipe-page {
+    max-width: 100%;
+  }
+
+  .recipe-grid,
+  .recipe-featured {
+    width: 100%;
+    padding: 0 20px;
+  }
+}
+
+@media screen and (max-width: 989px) {
+  .recipe-newsletter__wrapper {
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .recipe-grid {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .recipe-featured {
+    flex-direction: column;
+  }
+
+  .recipe-featured__main,
+  .recipe-featured__secondary,
+  .recipe-featured__main-image,
+  .recipe-featured__secondary-image {
+    width: 100%;
+  }
+
+  .recipe-featured__main-image {
+    height: auto;
+    aspect-ratio: 615/600;
+  }
+
+  .recipe-featured__secondary-image {
+    height: auto;
+    aspect-ratio: 564/248;
+  }
+}
+
 @media screen and (max-width: 749px) {
+  .recipe-page__title {
+    font-size: 32px;
+  }
+
+  .recipe-newsletter {
+    padding: 24px 20px;
+  }
+
+  .recipe-newsletter__heading {
+    font-size: 24px;
+  }
+
+  .recipe-filters {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .recipe-filter-button {
+    padding: 8px 20px;
+    font-size: 16px;
+  }
+
   .recipe-featured__title {
-    font-size: 2rem;
+    font-size: 28px;
   }
 
   .recipe-featured__secondary-title {
-    font-size: 1.5rem;
+    font-size: 24px;
   }
 }

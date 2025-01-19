@@ -1,0 +1,160 @@
+<div class="page-width">
+  <div class="section-{{ section.id }}-padding">
+    <h1 class="main-page-title page-title h0">
+      {{ page.title | escape }}
+    </h1>
+    <div class="rte">
+      {{ page.content }}
+    </div>
+
+    <div class="product-grid-container">
+      {% for block in section.blocks %}
+        <div class="product-grid-item" {{ block.shopify_attributes }}>
+          <div class="product-image-container">
+            {% if block.settings.image %}
+              {{ block.settings.image | image_url: width: 285 | image_tag:
+                class: "product-image",
+                loading: "lazy",
+                width: block.settings.image.width,
+                height: block.settings.image.height
+              }}
+            {% endif %}
+          </div>
+          <div class="product-details">
+            <div class="product-info">
+              <h2 class="product-title">{{ block.settings.title }}</h2>
+              <p class="product-category">{{ block.settings.category }}</p>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Directory Page",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Directory Settings"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "product_item",
+      "name": "Product Item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Product Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Product Title",
+          "default": "Product Title"
+        },
+        {
+          "type": "text",
+          "id": "category",
+          "label": "Product Category",
+          "default": "Category"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Directory Page",
+      "blocks": [
+        {
+          "type": "product_item"
+        },
+        {
+          "type": "product_item"
+        },
+        {
+          "type": "product_item"
+        },
+        {
+          "type": "product_item"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+.product-grid-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 45px;
+}
+
+.product-grid-item {
+  flex: 0 0 285px;
+  display: flex;
+  flex-direction: column;
+  gap: 19px;
+}
+
+.product-image-container {
+  width: 285px;
+  height: 285px;
+  background: white;
+  border: 1px solid #e7e7e7;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.product-image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+  padding: 20px;
+}
+
+.product-details {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5px;
+}
+
+.product-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.product-title {
+  font-size: 22px;
+  font-weight: 600;
+  color: #354439;
+  margin-bottom: 5px;
+}
+
+.product-category {
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #354439;
+  opacity: 0.7;
+}
+
+@media screen and (max-width: 1200px) {
+  .product-grid-container {
+    justify-content: center;
+    padding: 0 20px;
+  }
+}
+</style>

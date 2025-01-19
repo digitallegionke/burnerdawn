@@ -1,0 +1,118 @@
+{{ 'section-recipe.css' | asset_url | stylesheet_tag }}
+
+<div class="recipe-container">
+  <div class="recipe-intro">
+    <div class="recipe-intro__content">
+      <div class="recipe-intro__title">
+        <h1>What is {{ page.title }}?</h1>
+      </div>
+      <div class="recipe-intro__description">
+        {{ page.content }}
+      </div>
+    </div>
+    <div class="recipe-intro__image">
+      {% if section.settings.main_image %}
+        <img src="{{ section.settings.main_image | img_url: 'master' }}" 
+             alt="{{ page.title }}"
+             loading="lazy"
+             width="473"
+             height="351">
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="recipe-basics">
+    <div class="basics-header">
+      <h2>{{ page.title }} Basics</h2>
+    </div>
+    <div class="basics-grid">
+      <div class="basics-item">
+        <div class="basics-item__image pattern-bg"></div>
+        <div class="basics-item__content">
+          <div class="basics-item__title">
+            <h3>How to clean</h3>
+            <h3>{{ page.title }}</h3>
+          </div>
+        </div>
+      </div>
+      <div class="basics-item">
+        <div class="basics-item__image pattern-bg"></div>
+        <div class="basics-item__content">
+          <div class="basics-item__title">
+            <h3>How to store</h3>
+            <h3>{{ page.title }}</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="recipe-cooking">
+    <div class="cooking-header">
+      <div class="cooking-title">
+        <h2>Ways to cook with</h2>
+        <h2>{{ page.title }}</h2>
+      </div>
+      <div class="cooking-view-all">
+        <span>View all</span>
+        <span>{{ page.title }}</span>
+        <span>Recipes</span>
+        <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
+          <path d="M5.41713 14.0834L16.2505 14.0834L12.683 17.6508L14.2149 19.1826L18.8656 14.5319C19.2718 14.1256 19.5 13.5746 19.5 13C19.5 12.4255 19.2718 11.8745 18.8656 11.4682L14.2149 6.81745L12.683 8.34928L16.2505 11.9167L5.41713 11.9167L5.41713 14.0834Z" fill="#354439"/>
+        </svg>
+      </div>
+    </div>
+    <div class="cooking-grid">
+      {% for block in section.blocks %}
+        <div class="cooking-item">
+          {% if block.settings.recipe_image %}
+            <img src="{{ block.settings.recipe_image | img_url: 'master' }}" 
+                 alt="{{ block.settings.recipe_title }}"
+                 loading="lazy"
+                 width="100%"
+                 height="216">
+          {% endif %}
+          <h3>{{ block.settings.recipe_title }}</h3>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Single Recipe",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "main_image",
+      "label": "Main Recipe Image"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "recipe",
+      "name": "Recipe",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "recipe_image",
+          "label": "Recipe Image"
+        },
+        {
+          "type": "text",
+          "id": "recipe_title",
+          "label": "Recipe Title",
+          "default": "Recipe Title"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Single Recipe",
+      "category": "Recipe"
+    }
+  ]
+}
+{% endschema %}

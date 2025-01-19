@@ -1,0 +1,189 @@
+{{ 'section-recipe.css' | asset_url | stylesheet_tag }}
+
+<div class="recipe-newsletter">
+  <div class="page-width">
+    <div class="recipe-newsletter__wrapper">
+      <div class="recipe-newsletter__content">
+        <h2 class="recipe-newsletter__heading">
+          {{ 'newsletter.recipe.heading' | t }}
+          <span class="recipe-newsletter__heading-span">{{ 'newsletter.recipe.heading_span' | t }}</span>
+        </h2>
+      </div>
+      
+      {%- form 'customer', id: 'RecipeNewsletterForm', class: 'recipe-newsletter__form' -%}
+        <input type="hidden" name="contact[tags]" value="newsletter">
+        <div class="recipe-newsletter__field-wrapper">
+          <div class="recipe-newsletter__field">
+            <input
+              id="NewsletterForm--recipe"
+              type="email"
+              name="contact[email]"
+              class="recipe-newsletter__field__input"
+              value="{{ form.email }}"
+              aria-required="true"
+              autocorrect="off"
+              autocapitalize="off"
+              autocomplete="email"
+              {% if form.errors %}
+                autofocus
+                aria-invalid="true"
+                aria-describedby="RecipeForm-error"
+              {% elsif form.posted_successfully? %}
+                aria-describedby="RecipeForm-success"
+              {% endif %}
+              placeholder="{{ 'newsletter.recipe.email' | t }}"
+              required
+            >
+            <label class="recipe-newsletter__field__label" for="NewsletterForm--recipe">
+              {{ 'newsletter.recipe.email' | t }}
+            </label>
+          </div>
+          <button type="submit" class="recipe-newsletter__button" name="commit">
+            <span>{{ 'newsletter.recipe.button' | t }}</span>
+            <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg" class="recipe-newsletter__button-icon">
+              <path d="M5.41713 14.0834L16.2505 14.0834L12.683 17.6508L14.2149 19.1826L18.8656 14.5319C19.2718 14.1256 19.5 13.5746 19.5 13C19.5 12.4255 19.2718 11.8745 18.8656 11.4682L14.2149 6.81745L12.683 8.34928L16.2505 11.9167L5.41713 11.9167L5.41713 14.0834Z" fill="currentColor"/>
+            </svg>
+          </button>
+        </div>
+        {%- if form.errors -%}
+          <small class="recipe-newsletter__form-message form__message" id="RecipeForm-error">
+            {%- render 'icon-error' -%}
+            {{ form.errors.translated_fields.email | capitalize }}
+            {{ form.errors.messages.email }}
+          </small>
+        {%- endif -%}
+        {%- if form.posted_successfully? -%}
+          <p class="recipe-newsletter__form-message form__message" id="RecipeForm-success">
+            {%- render 'icon-success' -%}
+            {{ 'newsletter.success' | t }}
+          </p>
+        {%- endif -%}
+      {%- endform -%}
+      
+      <p class="recipe-newsletter__privacy">
+        {{ 'newsletter.recipe.privacy' | t }}
+      </p>
+    </div>
+  </div>
+</div>
+
+<style>
+  .recipe-newsletter {
+    background-color: #f9f9f9;
+    padding: 2.5rem 0;
+  }
+
+  .recipe-newsletter__wrapper {
+    display: flex;
+    align-items: center;
+    gap: 6rem;
+    padding: 0 2rem;
+  }
+
+  @media screen and (max-width: 989px) {
+    .recipe-newsletter__wrapper {
+      flex-direction: column;
+      gap: 2rem;
+      padding: 0 1rem;
+    }
+  }
+
+  .recipe-newsletter__heading {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #354439;
+    line-height: 1.2;
+    margin: 0;
+  }
+
+  .recipe-newsletter__heading-span {
+    display: block;
+  }
+
+  .recipe-newsletter__form {
+    flex: 1;
+    max-width: 662px;
+    width: 100%;
+  }
+
+  .recipe-newsletter__field-wrapper {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgba(53, 68, 57, 0.4);
+    padding: 1rem 0;
+    margin-bottom: 1rem;
+  }
+
+  .recipe-newsletter__field {
+    flex: 1;
+    position: relative;
+  }
+
+  .recipe-newsletter__field__input {
+    width: 100%;
+    border: none;
+    background: transparent;
+    font-size: 1.25rem;
+    color: #354439;
+    padding: 0.5rem 0;
+  }
+
+  .recipe-newsletter__field__input::placeholder {
+    color: rgba(53, 68, 57, 0.4);
+  }
+
+  .recipe-newsletter__field__input:focus {
+    outline: none;
+  }
+
+  .recipe-newsletter__button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: transparent;
+    border: none;
+    padding: 0.75rem;
+    cursor: pointer;
+    font-weight: 700;
+    color: #354439;
+    transition: opacity 0.3s ease;
+  }
+
+  .recipe-newsletter__button:hover {
+    opacity: 0.8;
+  }
+
+  .recipe-newsletter__button-icon {
+    width: 26px;
+    height: 26px;
+  }
+
+  .recipe-newsletter__privacy {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #354439;
+    margin: 1rem 0 0;
+  }
+
+  .recipe-newsletter__form-message {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Recipe Newsletter",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Recipe Newsletter"
+    }
+  ]
+}
+{% endschema %}
+
+{% javascript %}
+{% endjavascript %}

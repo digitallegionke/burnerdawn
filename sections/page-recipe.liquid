@@ -1,14 +1,14 @@
 {{ 'section-recipe.css' | asset_url | stylesheet_tag }}
 
-<div class="recipe-newsletter">
-  <div class="page-width">
+<div class="page-width recipe-page">
+  <h1 class="recipe-page__title">{{ 'recipes.title' | t }}</h1>
+
+  <div class="recipe-newsletter">
     <div class="recipe-newsletter__wrapper">
-      <div class="recipe-newsletter__content">
-        <h2 class="recipe-newsletter__heading">
-          {{ 'newsletter.recipe.heading' | t }}
-          <span class="recipe-newsletter__heading-span">{{ 'newsletter.recipe.heading_span' | t }}</span>
-        </h2>
-      </div>
+      <p class="recipe-newsletter__heading">
+        <span>{{ 'newsletter.recipe.heading' | t }}</span><br/>
+        <span>{{ 'newsletter.recipe.heading_span' | t }}</span>
+      </p>
       
       {%- form 'customer', id: 'RecipeNewsletterForm', class: 'recipe-newsletter__form' -%}
         <input type="hidden" name="contact[tags]" value="newsletter">
@@ -34,156 +34,187 @@
               placeholder="{{ 'newsletter.recipe.email' | t }}"
               required
             >
-            <label class="recipe-newsletter__field__label" for="NewsletterForm--recipe">
-              {{ 'newsletter.recipe.email' | t }}
-            </label>
           </div>
           <button type="submit" class="recipe-newsletter__button" name="commit">
             <span>{{ 'newsletter.recipe.button' | t }}</span>
-            <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg" class="recipe-newsletter__button-icon">
+            <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M5.41713 14.0834L16.2505 14.0834L12.683 17.6508L14.2149 19.1826L18.8656 14.5319C19.2718 14.1256 19.5 13.5746 19.5 13C19.5 12.4255 19.2718 11.8745 18.8656 11.4682L14.2149 6.81745L12.683 8.34928L16.2505 11.9167L5.41713 11.9167L5.41713 14.0834Z" fill="currentColor"/>
             </svg>
           </button>
         </div>
-        {%- if form.errors -%}
-          <small class="recipe-newsletter__form-message form__message" id="RecipeForm-error">
-            {%- render 'icon-error' -%}
-            {{ form.errors.translated_fields.email | capitalize }}
-            {{ form.errors.messages.email }}
-          </small>
-        {%- endif -%}
-        {%- if form.posted_successfully? -%}
-          <p class="recipe-newsletter__form-message form__message" id="RecipeForm-success">
-            {%- render 'icon-success' -%}
-            {{ 'newsletter.success' | t }}
-          </p>
-        {%- endif -%}
+        <p class="recipe-newsletter__privacy">{{ 'newsletter.recipe.privacy' | t }}</p>
       {%- endform -%}
-      
-      <p class="recipe-newsletter__privacy">
-        {{ 'newsletter.recipe.privacy' | t }}
-      </p>
+    </div>
+  </div>
+
+  <div class="recipe-grid">
+    {%- for block in section.blocks -%}
+      <div class="recipe-card" {{ block.shopify_attributes }}>
+        {%- if block.settings.image != blank -%}
+          <div class="recipe-card__image-wrapper">
+            {{ block.settings.image | image_url: width: 282 | image_tag:
+              loading: 'lazy',
+              class: 'recipe-card__image',
+              height: 216,
+              width: 282
+            }}
+          </div>
+        {%- endif -%}
+        <div class="recipe-card__content">
+          <p class="recipe-card__date">{{ block.settings.date }}</p>
+          <h3 class="recipe-card__title">{{ block.settings.title }}</h3>
+        </div>
+      </div>
+    {%- endfor -%}
+  </div>
+
+  <div class="recipe-filters">
+    <button class="recipe-filter-button recipe-filter-button--active">{{ 'recipes.filters.recipes' | t }}</button>
+    <button class="recipe-filter-button">{{ 'recipes.filters.meal_prep' | t }}</button>
+    <button class="recipe-filter-button">{{ 'recipes.filters.kitchen_tools' | t }}</button>
+    <button class="recipe-filter-button">{{ 'recipes.filters.kitchen_basics' | t }}</button>
+  </div>
+
+  <div class="recipe-featured">
+    <div class="recipe-featured__main">
+      {%- if section.settings.featured_image != blank -%}
+        {{ section.settings.featured_image | image_url: width: 615 | image_tag:
+          loading: 'lazy',
+          class: 'recipe-featured__main-image',
+          height: 600,
+          width: 615
+        }}
+      {%- endif -%}
+      <div class="recipe-featured__main-content">
+        <p class="recipe-featured__date">{{ section.settings.featured_date }}</p>
+        <h2 class="recipe-featured__title">{{ section.settings.featured_title }}</h2>
+      </div>
+    </div>
+
+    <div class="recipe-featured__secondary">
+      {%- for i in (1..2) -%}
+        {%- assign image_setting = 'secondary_image_' | append: i -%}
+        {%- assign date_setting = 'secondary_date_' | append: i -%}
+        {%- assign title_setting = 'secondary_title_' | append: i -%}
+        
+        <div class="recipe-featured__secondary-item">
+          {%- if section.settings[image_setting] != blank -%}
+            {{ section.settings[image_setting] | image_url: width: 564 | image_tag:
+              loading: 'lazy',
+              class: 'recipe-featured__secondary-image',
+              height: 248,
+              width: 564
+            }}
+          {%- endif -%}
+          <div class="recipe-featured__secondary-content">
+            <p class="recipe-featured__date">{{ section.settings[date_setting] }}</p>
+            <h3 class="recipe-featured__secondary-title">{{ section.settings[title_setting] }}</h3>
+          </div>
+        </div>
+      {%- endfor -%}
     </div>
   </div>
 </div>
 
-<style>
-  .recipe-newsletter {
-    background-color: #f9f9f9;
-    padding: 2.5rem 0;
-  }
-
-  .recipe-newsletter__wrapper {
-    display: flex;
-    align-items: center;
-    gap: 6rem;
-    padding: 0 2rem;
-  }
-
-  @media screen and (max-width: 989px) {
-    .recipe-newsletter__wrapper {
-      flex-direction: column;
-      gap: 2rem;
-      padding: 0 1rem;
-    }
-  }
-
-  .recipe-newsletter__heading {
-    font-size: 2rem;
-    font-weight: 600;
-    color: #354439;
-    line-height: 1.2;
-    margin: 0;
-  }
-
-  .recipe-newsletter__heading-span {
-    display: block;
-  }
-
-  .recipe-newsletter__form {
-    flex: 1;
-    max-width: 662px;
-    width: 100%;
-  }
-
-  .recipe-newsletter__field-wrapper {
-    display: flex;
-    align-items: center;
-    border-bottom: 1px solid rgba(53, 68, 57, 0.4);
-    padding: 1rem 0;
-    margin-bottom: 1rem;
-  }
-
-  .recipe-newsletter__field {
-    flex: 1;
-    position: relative;
-  }
-
-  .recipe-newsletter__field__input {
-    width: 100%;
-    border: none;
-    background: transparent;
-    font-size: 1.25rem;
-    color: #354439;
-    padding: 0.5rem 0;
-  }
-
-  .recipe-newsletter__field__input::placeholder {
-    color: rgba(53, 68, 57, 0.4);
-  }
-
-  .recipe-newsletter__field__input:focus {
-    outline: none;
-  }
-
-  .recipe-newsletter__button {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    background: transparent;
-    border: none;
-    padding: 0.75rem;
-    cursor: pointer;
-    font-weight: 700;
-    color: #354439;
-    transition: opacity 0.3s ease;
-  }
-
-  .recipe-newsletter__button:hover {
-    opacity: 0.8;
-  }
-
-  .recipe-newsletter__button-icon {
-    width: 26px;
-    height: 26px;
-  }
-
-  .recipe-newsletter__privacy {
-    font-size: 1.125rem;
-    font-weight: 600;
-    color: #354439;
-    margin: 1rem 0 0;
-  }
-
-  .recipe-newsletter__form-message {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    margin-top: 1rem;
-  }
-</style>
-
 {% schema %}
 {
-  "name": "Recipe Newsletter",
-  "settings": [],
+  "name": "Recipe Page",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "featured_image",
+      "label": "Featured Image"
+    },
+    {
+      "type": "text",
+      "id": "featured_date",
+      "label": "Featured Date",
+      "default": "August 8, 2024"
+    },
+    {
+      "type": "text",
+      "id": "featured_title",
+      "label": "Featured Title",
+      "default": "Keralan-Inspired Prawn Curry"
+    },
+    {
+      "type": "image_picker",
+      "id": "secondary_image_1",
+      "label": "Secondary Image 1"
+    },
+    {
+      "type": "text",
+      "id": "secondary_date_1",
+      "label": "Secondary Date 1",
+      "default": "August 8, 2024"
+    },
+    {
+      "type": "text",
+      "id": "secondary_title_1",
+      "label": "Secondary Title 1",
+      "default": "Creamy Butter Beans With Sausage"
+    },
+    {
+      "type": "image_picker",
+      "id": "secondary_image_2",
+      "label": "Secondary Image 2"
+    },
+    {
+      "type": "text",
+      "id": "secondary_date_2",
+      "label": "Secondary Date 2",
+      "default": "August 8, 2024"
+    },
+    {
+      "type": "text",
+      "id": "secondary_title_2",
+      "label": "Secondary Title 2",
+      "default": "Secret Chocolate Cake"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "recipe_card",
+      "name": "Recipe Card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "date",
+          "label": "Date",
+          "default": "August 8, 2024"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Recipe Title"
+        }
+      ]
+    }
+  ],
   "presets": [
     {
-      "name": "Recipe Newsletter"
+      "name": "Recipe Page",
+      "blocks": [
+        {
+          "type": "recipe_card"
+        },
+        {
+          "type": "recipe_card"
+        },
+        {
+          "type": "recipe_card"
+        },
+        {
+          "type": "recipe_card"
+        }
+      ]
     }
   ]
 }
 {% endschema %}
-
-{% javascript %}
-{% endjavascript %}

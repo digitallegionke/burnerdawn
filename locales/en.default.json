@@ -540,5 +540,14 @@
       "send_on": "YYYY-MM-DD",
       "send_on_label": "Send on (optional)"
     }
+  },
+  "recipes": {
+    "title": "Recipes",
+    "filters": {
+      "recipes": "Recipes",
+      "meal_prep": "Meal Prep",
+      "kitchen_tools": "Kitchen Tools",
+      "kitchen_basics": "Kitchen Basics"
+    }
   }
 }

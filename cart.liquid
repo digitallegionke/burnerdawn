@@ -1,0 +1,32 @@
+{% assign grouped_items = cart.items | group_by: 'properties["Next delivery date"]' %}
+
+{% for group in grouped_items %}
+  {% for item in group.items %}
+    <div class="cart-item">
+      <div class="product-info">
+        <img src="{{ item.image | img_url: '100x' }}" alt="{{ item.title }}">
+        <div class="product-details">
+          <h3>{{ item.product.title }}</h3>
+          <p>KSh{{ item.price | money_without_currency }}</p>
+        </div>
+      </div>
+      
+      <div class="quantity-controls">
+        <button class="quantity-btn" data-decrease>−</button>
+        <input type="number" value="{{ item.quantity }}" min="1" aria-label="Quantity">
+        <button class="quantity-btn" data-increase>+</button>
+        <button class="remove-btn" aria-label="Remove item">🗑</button>
+      </div>
+      
+      <div class="item-total">
+        <p>KSh{{ item.line_price | money_without_currency }}</p>
+      </div>
+    </div>
+  {% endfor %}
+  
+  {% if group.items.size > 0 %}
+    <div class="delivery-info">
+      <p>Delivery Date: {{ group.name | date: '%A, %B %d, %Y' }}</p>
+    </div>
+  {% endif %}
+{% endfor %} 
